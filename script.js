@@ -80,10 +80,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mostra o conteúdo inicial por padrão
     showContent('intro-content');
 
-    // 5. Lógica para o efeito de digitação no cabeçalho
-    const typingTitle = document.querySelector('.header-text h1');
-    if (typingTitle) {
-        // Adiciona a classe que dispara a animação CSS
-        typingTitle.classList.add('typing-effect');
-    }
 });
