@@ -57,6 +57,22 @@ html {
     background-attachment: fixed; /* Adiciona o efeito parallax */
     color: var(--branco);
     padding: var(--espacamento-lg) 0;
+}
+
+.header-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza todo o conteúdo do cabeçalho */
+    align-items: center;
+    gap: var(--espacamento-lg);
+}
+
+.header-text {
+    display: flex;
+    flex-wrap: wrap; /* Permite que o logo e o texto quebrem a linha se necessário */
+    align-items: center;
+    justify-content: center; /* Garante o alinhamento central dos seus filhos */
+    flex-direction: column; /* Força o alinhamento vertical (logo acima do texto) */
     text-align: center;
 }
 
@@ -65,19 +81,24 @@ html {
     margin-bottom: var(--espacamento-sm);
 }
 
+.title-wrapper {
+    display: flex;
+    gap: var(--espacamento-xs);
+    flex-direction: column;
+    align-items: center;
+}
+
 .header h1 {
-    font-size: 2.2rem;
+    /* Tamanho de fonte fluido: mínimo de 1.5rem, preferencial de 5vw, máximo de 2.2rem */
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
     font-weight: 700;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    /* Estilos para o efeito de digitação */
-    display: inline-block; /* Necessário para o efeito de largura */
-    overflow: hidden;
-    white-space: nowrap;
-    width: 0; /* Começa sem largura, será animado via JS */
+    min-height: 42px; /* Altura mínima para evitar "pulo" do subtítulo */
 }
 
 .header-subtitle {
-    font-size: 1.2rem;
+    /* Tamanho de fonte fluido: mínimo de 0.9rem, preferencial de 3vw, máximo de 1.2rem */
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
     font-weight: 400;
     opacity: 0.9;
 }
@@ -90,7 +111,6 @@ html {
     flex-wrap: wrap;
     justify-content: center;
     gap: var(--espacamento-sm);
-    margin-top: var(--espacamento-md);
 }
 
 .social-button {
@@ -150,25 +170,30 @@ html {
 .secretaria-btn {
     padding: 0.6rem 1.2rem;
     font-family: 'Poppins', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--cinza-texto);
-    background-color: transparent;
-    border: 2px solid transparent;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--preto-texto);
+    background-color: var(--branco);
+    border: 1px solid var(--cinza-borda);
     border-radius: var(--borda-arredondada-sm);
     cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .secretaria-btn:hover {
-    background-color: var(--azul-claro);
+    background-color: var(--branco);
     color: var(--azul-primario);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(13, 71, 161, 0.15);
 }
 
 .secretaria-btn.active {
     background-color: var(--azul-primario);
     color: var(--branco);
     border-color: var(--azul-primario);
+    box-shadow: 0 4px 12px rgba(13, 71, 161, 0.2);
+    transform: translateY(-2px);
 }
 
 /* ==========================================================================
@@ -216,7 +241,7 @@ html {
     margin-bottom: var(--espacamento-lg);
     color: var(--azul-primario);
     position: relative;
-    font-size: 1.8rem;
+    font-size: 1.6rem; /* Reduzido para melhor proporção */
 }
 
 .section-title::after {
@@ -280,7 +305,7 @@ html {
 }
 
 .card-title h3 {
-    font-size: 1.3rem;
+    font-size: 1.15rem; /* Reduzido para melhor encaixe no card */
     font-weight: 600;
     margin-bottom: 0.3rem;
 }
@@ -291,6 +316,12 @@ html {
     gap: 8px;
     font-size: 0.95rem;
     opacity: 0.9;
+}
+
+.director-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .card-content {
@@ -312,15 +343,15 @@ html {
 
 .contact-item {
     display: flex;
-    flex-direction: column; /* Altera a direção para vertical */
-    gap: 2px; /* Reduz o espaçamento para o novo layout */
-    align-items: flex-start;
+    align-items: flex-start; /* Alinha o ícone e o texto no topo */
+    gap: var(--espacamento-xs);
 }
 
 .contact-label {
     min-width: 90px;
     font-weight: 600;
     color: var(--preto-texto);
+    flex-shrink: 0; /* Impede que o label encolha */
 }
 
 .contact-value-card {
@@ -336,6 +367,12 @@ html {
 
 .contact-value-card a:hover {
     text-decoration: underline;
+}
+
+.contact-item i {
+    margin-top: 5px; /* Alinha o ícone verticalmente com o texto */
+    color: var(--azul-secundario);
+    width: 16px; /* Garante um espaço consistente para o ícone */
 }
 
 .horario-atendimento {
@@ -354,6 +391,22 @@ html {
     border-bottom: 2px solid var(--cinza-borda);
 }
 
+.subsection-title {
+    text-align: center;
+    margin-top: var(--espacamento-lg);
+    margin-bottom: var(--espacamento-md);
+    color: var(--preto-texto);
+    font-size: 1.3rem;
+}
+
+.responsibles-info {
+    margin-top: var(--espacamento-sm);
+}
+.responsibles-info h4 {
+    margin-bottom: var(--espacamento-xs);
+    color: var(--preto-texto);
+}
+
 .competencies-list {
     padding-left: 1.2rem;
 }
@@ -361,6 +414,7 @@ html {
 .competencies-list li {
     margin-bottom: 0.8rem;
     position: relative;
+    text-align: justify;
 }
 
 .competencies-list li::marker {
@@ -520,34 +574,62 @@ html {
    Responsividade
    ========================================================================== */
 @media (max-width: 768px) {
-    .header h1 {
-        font-size: 1.8rem;
+    .header {
+        padding: var(--espacamento-md) 0; /* Reduz o preenchimento vertical */
     }
-    .header-subtitle {
-        font-size: 1.1rem;
+
+    .header-logo {
+        max-height: 60px; /* Diminui o tamanho do logo */
+        margin-bottom: var(--espacamento-xs);
     }
+
+    /* As regras de fonte do cabeçalho agora são fluidas e não precisam de ajuste aqui */
+    .secretaria-btn {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.8rem;
+        font-weight: 500;
+    }
+
+    .social-button span {
+        display: none; /* Esconde o texto do botão */
+    }
+
+    .social-button {
+        padding: 0.7rem; /* Ajusta o padding para um formato quadrado */
+        width: 44px;     /* Define uma largura fixa */
+        height: 44px;    /* Define uma altura fixa */
+        justify-content: center; /* Centraliza o ícone */
+    }
+
     .department-grid {
         grid-template-columns: 1fr;
     }
     .footer-content {
         justify-content: center; /* Centraliza as colunas do rodapé */
-        text-align: le;
+        text-align: center;
     }
     .footer-column {
         /* Garante que a coluna do logo também se centralize */
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-align: center;
     }
     .footer-title::after {
         /* Centraliza o sublinhado em telas menores */
         left: 50%;
         transform: translateX(-50%);
     }
+
     .footer-social, .footer-contact, .footer-links {
         /* Centraliza o conteúdo das colunas em telas menores */
         justify-content: center;
         align-items: center;
+    }
+
+    .header-text {
+        gap: var(--espacamento-md); /* Aumenta o espaçamento em telas menores */
+        width: 100%;
     }
 }
 
@@ -563,20 +645,138 @@ html {
     animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Animação de digitação */
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
+/* Altera a cor do cabeçalho para todos os cards da SEMOSP */
+#content-semosp .card-header {
+    background: linear-gradient(to right, #ef6c00, #f57c00); /* Gradiente Laranja */
 }
 
-/* Animação do cursor piscando */
-@keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: var(--azul-secundario); }
+/* Altera a cor do cabeçalho para todos os cards da SEMSAU */
+#content-semsau .card-header {
+    background: linear-gradient(to right, #2e7d32, #4caf50); /* Gradiente Verde (Saúde) */
 }
 
-.typing-effect {
-    border-right: .15em solid var(--azul-secundario); /* O cursor */
-    animation: typing 3s steps(30, end) forwards, /* 30 passos para o texto */
-               blink-caret .75s step-end infinite;
+/* Altera a cor do cabeçalho para todos os cards da SEMED */
+#content-semed .card-header {
+    background: linear-gradient(to right, #1565c0, #1e88e5); /* Gradiente Azul (Educação) */
 }
+
+/* Altera a cor do cabeçalho para todos os cards da SEMFAZ */
+#content-semfaz .card-header {
+    background: linear-gradient(to right, #f9a825, #fbc02d); /* Gradiente Dourado (Finanças) */
+}
+
+/* Altera a cor do cabeçalho para todos os cards da SEMAGRI */
+#content-semagri .card-header {
+    background: linear-gradient(to right, #558b2f, #7cb342); /* Gradiente Verde (Agricultura) */
+}
+
+/* Altera a cor do cabeçalho para todos os cards da SEMMA */
+#content-semma .card-header {
+    background: linear-gradient(to right, #00796b, #009688); /* Gradiente Verde-azulado (Meio Ambiente) */
+}
+
+/* Altera a cor do cabeçalho para todos os cards da SEMAST */
+#content-semast .card-header {
+    background: linear-gradient(to right, #6a1b9a, #8e24aa); /* Gradiente Roxo (Assistência Social) */
+}
+
+/* Altera a cor do cabeçalho para todos os cards da AMPIB */
+#content-autarquia .card-header {
+    background: linear-gradient(to right, #d32f2f, #f44336); /* Gradiente Vermelho (Esporte/Cultura) */
+}
+
+/* Altera a cor do cabeçalho para todos os cards do Gabinete */
+#content-gabinete .card-header {
+    background: linear-gradient(to right, #424242, #616161); /* Gradiente Cinza Escuro (Gabinete) */
+}
+
+/* Altera a cor do cabeçalho para todos os cards da SRI */
+#content-sri .card-header {
+    background: linear-gradient(to right, #283593, #3949ab); /* Gradiente Índigo (Relações Institucionais) */
+}
+
+/* Altera a cor do cabeçalho para todos os cards da SEMPLAN */
+#content-semplan .card-header {
+    background: linear-gradient(to right, #6d4c41, #8d6e63); /* Gradiente Marrom (Planejamento) */
+}
+
+/* ==========================================================================
+   Estilos Personalizados para os Cards de Contato
+   ========================================================================== */
+
+/* Estilos para SEMOSP */
+#content-semosp .contact-info-card { background: linear-gradient(to right, #ef6c00, #f57c00); color: var(--branco); }
+#content-semosp .contact-info-card .contact-label,
+#content-semosp .contact-info-card .contact-value-card a,
+#content-semosp .contact-info-card .horario-atendimento,
+#content-semosp .contact-info-card i { color: var(--branco); }
+
+/* Estilos para SEMSAU */
+#content-semsau .contact-info-card { background: linear-gradient(to right, #2e7d32, #4caf50); color: var(--branco); }
+#content-semsau .contact-info-card .contact-label,
+#content-semsau .contact-info-card .contact-value-card a,
+#content-semsau .contact-info-card .horario-atendimento,
+#content-semsau .contact-info-card i { color: var(--branco); }
+
+/* Estilos para SEMED */
+#content-semed .contact-info-card { background: linear-gradient(to right, #1565c0, #1e88e5); color: var(--branco); }
+#content-semed .contact-info-card .contact-label,
+#content-semed .contact-info-card .contact-value-card a,
+#content-semed .contact-info-card .horario-atendimento,
+#content-semed .contact-info-card i { color: var(--branco); }
+
+/* Estilos para SEMFAZ */
+#content-semfaz .contact-info-card { background: linear-gradient(to right, #f9a825, #fbc02d); color: var(--branco); }
+#content-semfaz .contact-info-card .contact-label,
+#content-semfaz .contact-info-card .contact-value-card a,
+#content-semfaz .contact-info-card .horario-atendimento,
+#content-semfaz .contact-info-card i { color: var(--branco); }
+
+/* Estilos para SEMAGRI */
+#content-semagri .contact-info-card { background: linear-gradient(to right, #558b2f, #7cb342); color: var(--branco); }
+#content-semagri .contact-info-card .contact-label,
+#content-semagri .contact-info-card .contact-value-card a,
+#content-semagri .contact-info-card .horario-atendimento,
+#content-semagri .contact-info-card i { color: var(--branco); }
+
+/* Estilos para SEMMA */
+#content-semma .contact-info-card { background: linear-gradient(to right, #00796b, #009688); color: var(--branco); }
+#content-semma .contact-info-card .contact-label,
+#content-semma .contact-info-card .contact-value-card a,
+#content-semma .contact-info-card .horario-atendimento,
+#content-semma .contact-info-card i { color: var(--branco); }
+
+/* Estilos para SEMAST */
+#content-semast .contact-info-card { background: linear-gradient(to right, #6a1b9a, #8e24aa); color: var(--branco); }
+#content-semast .contact-info-card .contact-label,
+#content-semast .contact-info-card .contact-value-card a,
+#content-semast .contact-info-card .horario-atendimento,
+#content-semast .contact-info-card i { color: var(--branco); }
+
+/* Estilos para AMPIB */
+#content-autarquia .contact-info-card { background: linear-gradient(to right, #d32f2f, #f44336); color: var(--branco); }
+#content-autarquia .contact-info-card .contact-label,
+#content-autarquia .contact-info-card .contact-value-card a,
+#content-autarquia .contact-info-card .horario-atendimento,
+#content-autarquia .contact-info-card i { color: var(--branco); }
+
+/* Estilos para Gabinete */
+#content-gabinete .contact-info-card { background: linear-gradient(to right, #424242, #616161); color: var(--branco); }
+#content-gabinete .contact-info-card .contact-label,
+#content-gabinete .contact-info-card .contact-value-card a,
+#content-gabinete .contact-info-card .horario-atendimento,
+#content-gabinete .contact-info-card i { color: var(--branco); }
+
+/* Estilos para SRI */
+#content-sri .contact-info-card { background: linear-gradient(to right, #283593, #3949ab); color: var(--branco); }
+#content-sri .contact-info-card .contact-label,
+#content-sri .contact-info-card .contact-value-card a,
+#content-sri .contact-info-card .horario-atendimento,
+#content-sri .contact-info-card i { color: var(--branco); }
+
+/* Estilos para SEMPLAN */
+#content-semplan .contact-info-card { background: linear-gradient(to right, #6d4c41, #8d6e63); color: var(--branco); }
+#content-semplan .contact-info-card .contact-label,
+#content-semplan .contact-info-card .contact-value-card a,
+#content-semplan .contact-info-card .horario-atendimento,
+#content-semplan .contact-info-card i { color: var(--branco); }

@@ -79,5 +79,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mostra o conteúdo inicial por padrão
     showContent('intro-content');
-
 });
